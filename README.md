@@ -1,4 +1,3 @@
-Attempting to perform the InitializeDefaultDrives operation on the 'FileSystem' provider failed.
 # Storeroom Scanner — free iPhone build attempt
 
 This small native prototype checks the free Windows-to-iPhone build route:

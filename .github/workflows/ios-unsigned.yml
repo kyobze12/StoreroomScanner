@@ -7,4 +7,6 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Workflow parsed"
+      - run: brew install xcodegen
+      - run: xcodegen generate
+      - run: echo "Workflow syntax parsed"

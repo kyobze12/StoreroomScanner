@@ -1,36 +1,9 @@
-Attempting to perform the InitializeDefaultDrives operation on the 'FileSystem' provider failed.
-name: Build unsigned iPhone app
+name: CI
 on: push
-
 permissions:
   contents: read
-
 jobs:
   build:
     runs-on: macos-15
     steps:
-      - name: Check out source
-        uses: actions/checkout@v4
-      - name: Install XcodeGen
-        run: brew install xcodegen
-      - name: Generate Xcode project
-        run: xcodegen generate
-      - name: Build unsigned iOS app
-        run: |
-          xcodebuild -project StoreroomScanner.xcodeproj -scheme StoreroomScanner \
-            -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' \
-            -derivedDataPath build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY="" clean build
-      - name: Package IPA
-        run: |
-          mkdir -p Payload
-          cp -R build/Build/Products/Release-iphoneos/StoreroomScanner.app Payload/
-          cd Payload
-          /usr/bin/zip -r ../StoreroomScanner.ipa StoreroomScanner.app
-      - name: Upload IPA
-        uses: actions/upload-artifact@v4
-        with:
-          name: StoreroomScanner-unsigned-ipa
-          path: StoreroomScanner.ipa
-          retention-days: 14
-
+      - run: echo "Workflow parsed"

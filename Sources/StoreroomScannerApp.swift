@@ -6,7 +6,7 @@ import UIKit
 
 @main
 struct StoreroomScannerApp: App {
-    var body: some Scene {
+    var body: some SwiftUI.Scene {
         WindowGroup { RootTabsView() }
             .modelContainer(for: StoreItem.self)
     }
